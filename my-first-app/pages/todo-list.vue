@@ -21,7 +21,7 @@
       <div class="todo-list-ui">
         <!-- 每一個待辦事項的模板 -->
         <div v-for="todo in todoList" :key="todo.createdAt" class="todo-item">
-          <div class="toto-category">{{ todo.category }}</div>
+          <div class="todo-category">{{ todo.category }}</div>
           <div class="todo-text">{{ todo.text }}</div>
         </div>
         <!-- 每一個待辦事項的模板 end -->

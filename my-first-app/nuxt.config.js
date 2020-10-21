@@ -41,5 +41,6 @@ export default {
 
   css:[
     '@/assets/css/main.scss'
-  ]
+  ],
+  css:['@/assets/css/style.scss']
 }
