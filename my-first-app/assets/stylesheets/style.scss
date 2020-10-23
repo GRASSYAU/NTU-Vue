@@ -1,4 +1,5 @@
 
+
 * {
     box-sizing: border-box;
 }
@@ -13,7 +14,7 @@ body {
 
 .container {
     max-width: 600px;
-    margin: 50px 0;
+    margin: 50px auto;
     padding: 0 15px;
 }
 
@@ -48,6 +49,21 @@ $todo-border: 1px solid #ccc;
     &:hover {
         background-color: #fafafa;
     }
+}
+
+.todo-category{
+    padding: 2px 6px;
+    color: #fff;
+    border-radius: 5px;
+    background: gray;
+}
+
+.tag-gold{
+    background-color: gold;
+}
+
+.tag-tomato{
+    background-color: tomato;
 }
 // ..todo-item:hover
 // .todo-item:last-child {}
