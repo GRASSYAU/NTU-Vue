@@ -14,7 +14,7 @@ import { mapMutations } from "vuex"
 import TodoApp from "@/components/TodoApp"
 export default {
   name:"todoPage",
-  components:{
+  components:{//資料夾名稱 元件夾
     TodoApp,
   },
   methods:{
