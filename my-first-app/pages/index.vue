@@ -1,26 +1,27 @@
 <template>
   <div>
-    <h1>{{ title }}</h1>
-    <h2>{{subtitle}}</h2>
-    <input type="text" v-model="title"> <!--v-model =>vue的特有屬性 -->
-    <br>
-        <input type="text" v-model="subtitle">
-    <div>
-      <nuxt-link to="/about">關於本站</nuxt-link>
-      <nuxt-link to="/contact">聯絡我們</nuxt-link>
+    <div class="container">
+      <!-- 將store/todos.js拉過來的第二種方法，非經典 -->
+      <h1>Todo Page {{ $store.state.todos.numX }}</h1>
+      <button @click="addXBtnClick">numX + 1</button>
+      <nuxt-link to="/todo-list">回到list</nuxt-link>
+      <TodoApp />
     </div>
   </div>
 </template>
-
 <script>
-//VUE的起手式一個data函式 //用資料改變頁面
+import { mapMutations } from "vuex"
+import TodoApp from "@/components/TodoApp"
 export default {
-  data() {
-    return {
-      title:'我的網站',
-      subtitle:"我是老二",
-    }
+  name:"todoPage",
+  components:{
+    TodoApp,
   },
-};
+  methods:{
+    ...mapMutations('todos',["addX"]),
+    addXBtnClick(){
+      this.addX();
+    },
+  },
+}
 </script>
-

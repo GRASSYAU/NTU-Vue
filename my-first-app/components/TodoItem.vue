@@ -1,6 +1,9 @@
 <template>
     <div class="todo-item">
         <!-- <div class="todo-category" :style="{backgroundColor:getCategoryColor}">{{ todo.category }}</div> -->
+        <button @click="btnClick" class="remove-btn">
+            &times;
+        </button>
         <div
             :class="['todo-category',getCategoryColor]"
         >   
@@ -41,9 +44,15 @@ export default {
                 icon= iconMap[this.todo.category]
             }
              return icon;
-        }
+        },
        
-    }
+    },
+    methods: {
+        btnClick(){
+            //通知上一層移除按鈕被點了
+            this.$emit("onRemoveClick")
+        }
+    },
 }
 
 </script>

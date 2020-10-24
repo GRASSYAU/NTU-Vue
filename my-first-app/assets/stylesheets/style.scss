@@ -1,4 +1,4 @@
-
+$remove-btn-bg:red;
 
 * {
     box-sizing: border-box;
@@ -65,5 +65,41 @@ $todo-border: 1px solid #ccc;
 .tag-tomato{
     background-color: tomato;
 }
+.todo-item{
+    position: relative;
+    transition: all 0.5s ease;
+        overflow: hidden;
+        cursor: pointer;
+    &:hover{
+        padding-left: 50px;
+        
+    }
+    
+    &:hover .remove-btn{
+        left: 15px;
+        
+    }
+}
+.remove-btn{
+    background: $remove-btn-bg;
+    color: #fff;
+    border: none;
+    transition: .3s;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    position: absolute;
+    left: -50px;
+    &:hover{
+        background:darken($remove-btn-bg,20%);
+        cursor: pointer;
+    }
+    &:focus{
+        outline: none;
+        box-shadow: 0 0 0 8px rgba($remove-btn-bg, .3);
+    }
+}
+
+
 // ..todo-item:hover
 // .todo-item:last-child {}
