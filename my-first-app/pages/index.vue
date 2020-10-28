@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <!-- 將store/todos.js拉過來的第二種方法，非經典 -->
-      <h1>Todo Page {{ $store.state.todos.numX }}</h1>
+      <h1>Todo Page {{ getX }}</h1>
       <button @click="addXBtnClick">numX + 1</button>
       <nuxt-link to="/todo-list">回到list</nuxt-link>
       <TodoApp />
@@ -10,14 +10,21 @@
   </div>
 </template>
 <script>
-import { mapMutations } from "vuex"
+import { mapMutations, mapGetters } from "vuex"
 import TodoApp from "@/components/TodoApp"
+
+
+
 export default {
   name:"todoPage",
   components:{//資料夾名稱 元件夾
     TodoApp,
   },
+  computed:{
+    ...mapGetters("todos", ["getX"])
+  },
   methods:{
+    //取得store/todos裡的addX函數
     ...mapMutations('todos',["addX"]),
     addXBtnClick(){
       this.addX();
