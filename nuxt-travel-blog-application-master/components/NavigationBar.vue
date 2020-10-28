@@ -6,8 +6,8 @@
         <span class="menu-btn-bar"></span>
       </button>
       <div class="nav-list">
-        <nuxt-link class="brand" to="/">Home</nuxt-link>
-        <nuxt-link class="brand" to="/about">About</nuxt-link>
+        <nuxt-link  to="/">Home</nuxt-link>
+        <nuxt-link  to="/about">About</nuxt-link>
         <a>Sign In</a>
         <a>Register</a>
       </div>
@@ -19,3 +19,10 @@ export default {
   name: "NavigationBar",
 };
 </script>
+
+<style>
+  .nav-list  .nuxt-link-exact-active{
+    color: red;
+    cursor: pointer;
+  }
+</style>
