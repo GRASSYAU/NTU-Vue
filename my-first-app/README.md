@@ -1,4 +1,4 @@
-# my-first-app
+# nuxt-todo-list-app
 
 ## Build Setup
 

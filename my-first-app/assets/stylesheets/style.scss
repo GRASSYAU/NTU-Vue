@@ -1,105 +1,111 @@
-$remove-btn-bg:red;
-
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .text-red {
-    color: red;
+  color: red;
 }
 
 .container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 0 15px;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 0 15px;
 }
 
 .create-todo-ui form {
-    display: flex;
-    margin: 30px 0;
-    input {
-        flex: 1;
-    }
-    select, button {
-        margin-left: 5px;
-    }
+  display: flex;
+  margin: 30px 0;
+
+  input {
+    flex: 1;
+  }
+
+  select,
+  button {
+    margin-left: 5px;
+  }
 }
 
 $todo-border: 1px solid #ccc;
 
 .todo-list-ui {
-    border: $todo-border;
-    border-radius: 3px;
-    margin: 30px 0;
+  border: $todo-border;
+  border-radius: 3px;
+  margin: 30px 0;
 }
 
 .todo-item {
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: $todo-border;
-    // 選到最後一個.todo-item
-    &:last-child {
-        border-bottom: none;
-    }
-    &:hover {
-        background-color: #fafafa;
-    }
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: $todo-border;
+
+  // 選到最後一個.todo-item
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: #fafafa;
+  }
 }
 
-.todo-category{
-    padding: 2px 6px;
-    color: #fff;
-    border-radius: 5px;
-    background: gray;
+.todo-category {
+  padding: 2px 6px;
+  color: white;
+  border-radius: 3px;
+  background-color: rgb(78, 73, 70);
 }
 
-.tag-gold{
-    background-color: gold;
+.tag-gold {
+  background-color: rgb(209, 180, 13);
 }
 
-.tag-tomato{
-    background-color: tomato;
+.tag-tomato {
+  background-color: rgb(241, 84, 56);
 }
-.todo-item{
-    position: relative;
-    transition: all 0.5s ease;
-        overflow: hidden;
-        cursor: pointer;
-    &:hover{
-        padding-left: 50px;
-        
-    }
-    
-    &:hover .remove-btn{
-        left: 15px;
-        
-    }
-}
-.remove-btn{
-    background: $remove-btn-bg;
-    color: #fff;
-    border: none;
-    transition: .3s;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    position: absolute;
-    left: -50px;
-    &:hover{
-        background:darken($remove-btn-bg,20%);
-        cursor: pointer;
-    }
-    &:focus{
-        outline: none;
-        box-shadow: 0 0 0 8px rgba($remove-btn-bg, .3);
-    }
-}
-
 
 // ..todo-item:hover
 // .todo-item:last-child {}
+$remove-btn-bg: #f14343;
+
+.todo-item {
+  position: relative;
+  transition: all .5s ease;
+  overflow: hidden;
+
+  &:hover {
+    padding-left: 52px;
+  }
+
+  &:hover .remove-btn {
+    left: 15px;
+  }
+}
+
+.remove-btn {
+  color: white;
+  border: none;
+  background-color: $remove-btn-bg;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  transition: all .5s ease;
+  cursor: pointer;
+  position: absolute;
+  left: -50px;
+
+  &:hover {
+    // lighten(顏色, 20%);
+    background-color: darken($remove-btn-bg, 20%);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($remove-btn-bg, .3);
+  }
+}

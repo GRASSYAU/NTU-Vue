@@ -1,10 +1,10 @@
 <template>
-    <div class="todo-list-ui">
-        <slot></slot>
-    </div>
+  <div class="todo-list-ui">
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {
-    name:'TodoList',
-}
+  name: "TodoList",
+};
 </script>
