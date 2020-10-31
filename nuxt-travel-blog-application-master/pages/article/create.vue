@@ -8,8 +8,14 @@
     <section class="py-5">
       <div class="container">
         <!-- 新增文章表單 -->
-        <form></form>
+        <form>
+          <InputGroup label="主標題" :defaultValue="title" @onChange="(value)=> (title = value)"/>
+          <InputGroup label="城市"  @onChange="(value)=> (city=value)"/>
+          <TagInputGroup />
+        </form>
         <!-- 新增文章表單 end -->
+        <p>標題: {{ title }}</p>
+        <p>城市: {{ city }}</p>
       </div>
     </section>
   </div>
@@ -17,5 +23,16 @@
 <script>
 export default {
   name: "CreateArticlePage",
+  data(){
+    return{
+      title:"title 1",
+      city:"",
+    };
+  },
+  methods:{
+    updateTitle(text){
+      this.title = text;
+    }
+  }
 };
 </script>
