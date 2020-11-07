@@ -13,7 +13,7 @@ export default ( context, inject )=>{
     //讓每個vue元件都可以使用 this.$athor 取得作者資訊
     inject("author", author)
     inject("getAuthorInfo",(greeting)=>{
-        return `${greeting},我是${aythor.name}`
+        return `${greeting},我是${author.name}`
     });
 };
 

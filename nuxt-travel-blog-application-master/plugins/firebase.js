@@ -24,4 +24,8 @@ export default (context, inject)=>{
     //讓每個vue元件可透過
     //this.$storage 取得 firebase.storage()
     inject('storage',firebase.storage());
+    //this.$db
+    inject('db', firebase.firestore());
+    // this.$auth
+    inject('auth', firebase.auth());
 }
