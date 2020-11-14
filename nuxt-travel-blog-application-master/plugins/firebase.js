@@ -28,4 +28,6 @@ export default (context, inject) => {
     inject('db', firebase.firestore());
     // this.$auth
     inject('auth', firebase.auth());
+    //this.$googleProvider
+    inject('googleProvider', new firebase.auth.GoogleAuthProvider());
 }

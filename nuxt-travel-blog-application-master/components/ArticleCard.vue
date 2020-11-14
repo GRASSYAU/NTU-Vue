@@ -11,7 +11,7 @@
         <nuxt-link :to="`/article/${article.id}`" class="btn btn-primary">
           Details
         </nuxt-link>
-        <nuxt-link :to="`/article/${article.id}/edit`" class="btn btn-warning">
+        <nuxt-link v-if="isAdmin" :to="`/article/${article.id}/edit`" class="btn btn-warning">
           Edit
         </nuxt-link>
       </div>
@@ -19,9 +19,13 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "ArticleCard",
   props: ["article"],
+  computed: {
+    ...mapGetters("authStore", ["isAdmin"]),
+  },
 };
 </script>
 <style scoped>
