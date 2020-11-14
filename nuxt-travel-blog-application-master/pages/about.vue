@@ -19,11 +19,19 @@
           <h2 class="section-title text-center">Topics</h2>
           <div class="section-title-bar bg-warning"></div>
         </div>
+
         <!-- AboutTopic -->
-        <AboutTopic title="story" image="topic_1.jpg" />
-        <AboutTopic title="team" image="topic_2.jpg" :reverse="true" />
-        <AboutTopic title="story" image="topic_3.jpg" />
-        <AboutTopic title="story" image="topic_4.jpg" :reverse="true"  />
+        <AboutTopic title="Story" image="topic_1.jpg" />
+        <!-- AboutTopic end -->
+        <!-- AboutTopic -->
+        <AboutTopic title="Team" image="topic_2.jpg" :reverse="true" />
+        <!-- AboutTopic end -->
+        <!-- AboutTopic -->
+        <AboutTopic title="Projects" image="topic_3.jpg" />
+        <!-- AboutTopic end -->
+        <!-- AboutTopic -->
+        <AboutTopic title="Contact" image="topic_4.jpg" :reverse="true" />
+        <!-- AboutTopic end -->
       </div>
     </section>
     <!-- Section end -->
@@ -32,6 +40,5 @@
 <script>
 export default {
   name: "AboutPage",
-  
 };
 </script>

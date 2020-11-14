@@ -12,12 +12,12 @@
           <InputGroup
             label="主標題"
             :defaultValue="title"
-            @onChange="(value) => (title = value)"
+            @onChange="(val) => (title = val)"
           />
           <InputGroup
             label="城市"
             :defaultValue="city"
-            @onChange="(value) => (city = value)"
+            @onChange="(val) => (city = val)"
           />
           <TagInputGroup
             :defaultValue="tagList"
@@ -25,15 +25,19 @@
           />
           <div class="form-group">
             <p>縮圖</p>
-            <input @change="fileChange" type="file" accept=".jpg,.png,.svg" />
+            <input @change="fileChange" type="file" accept=".jpg,.png" />
             <img v-if="previewImage" :src="previewImage" alt="" class="w-100" />
           </div>
           <div class="form-group">
-            <GoogleMapInput />
+            <GoogleMapInput
+              :value="location"
+              @locationChanged="(val) => (location = val)"
+            />
+            <p>{{ location }}</p>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary">
-              creata Article
+              Create Article
             </button>
           </div>
         </form>
@@ -41,7 +45,6 @@
         <!-- <p>標題: {{ title }}</p>
         <p>城市: {{ city }}</p>
         <p>標籤列表: {{ tagList }}</p> -->
-        <p>{{ authorInfo }}</p>
       </div>
     </section>
   </div>
@@ -51,11 +54,15 @@ export default {
   name: "CreateArticlePage",
   data() {
     return {
-      title: "title 1",
-      city: "",
-      tagList: ["日本"],
+      title: "預設標題",
+      city: "台北",
+      tagList: ["台灣", "台北"],
+      previewImage: "https://picsum.photos/id/192/1600/800",
       authorInfo: "",
-      previewImage: "",
+      location: {
+        lat: 25,
+        lng: 122,
+      },
     };
   },
   methods: {
@@ -66,46 +73,48 @@ export default {
         title: vm.title,
         city: vm.city,
         tagList: vm.tagList,
-        authorInfo: vm.authorInfo,
         previewImage: vm.previewImage,
-        creaedAt: new Date().getTime(),
+        location: vm.location,
+        createdAt: new Date().getTime(),
       };
-      console.log("[article]",article)
+      console.log("[article]", article);
       // 將article存到firestore(vm.$db)
+      // vm.$db => firebase.firestore()
       vm.$db
         .collection("articleList")
         .add(article)
         .then((res) => {
-          console.log("[新增成功]",res);
-          //引導回首頁('/')
+          console.log("[新增成功]", res);
+          // 引導回首頁('/')
           vm.$router.push("/");
         })
-        .catch((err) =>{
-          console.log("[err]",err);
-          alert("新增文章失敗");
-        })
+        .catch((err) => {
+          console.log("[err]", err);
+          alert("新增文章失敗，請再試一次。");
+        });
     },
     updateTitle(text) {
       this.title = text;
     },
     fileChange(event) {
-      // console.log("[收到縮圖了]")
-      //取得檔案資訊
+      // console.log("[收到縮圖了]", event);
+      // 取得檔案資訊
       const file = event.target.files[0];
-      // console.log("檔案資訊",file)
+      // console.log("[檔案資訊]", file);
       const fullName = file.name;
-      // console.log("[全名]",fullName);
-      //
-      //產生firebase sotrage的路徑對應
+      // console.log("[全名]", fullName);
+      // a = file.name.split('.') => ['檔名', 'jpg']
+      // fullName = a[0] + new Date.getTime() + '.' + a[1]
+      // 產生firebase storage的路徑對應
       const baseRef = this.$storage.ref();
       // images/檔名
       const path = baseRef.child(`images/${fullName}`);
-      //將檔案傳至指定的path
+      // 將檔案傳至指定的path
       path
         .put(file)
         .then(async (snapshot) => {
           console.log("傳輸成功", snapshot);
-          ///等待getDownloadURL回傳下載網址
+          // 等待getDownloadURL回傳下載網址
           const imgURL = await snapshot.ref.getDownloadURL();
           console.log("圖片網址", imgURL);
           this.previewImage = imgURL;
@@ -114,9 +123,9 @@ export default {
     },
   },
   mounted() {
-    console.log("vue元件", this);
-    // console.log("個人資料",this.$author);
-    this.authorInfo = this.$getAuthorInfo("哈囉");
+    console.log("[Vue元件]", this);
+    // console.log("[作者資訊]", this.$author);
+    this.authorInfo = this.$getAuthorInfo("Hello");
   },
 };
 </script>

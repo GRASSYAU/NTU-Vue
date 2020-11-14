@@ -13,6 +13,28 @@
         <a>Register</a>
       </div>
     </nav>
+    <!-- 登入視窗 -->
+    <Modal v-if="showLogin">
+      <h3 class="text-center">Sign in</h3>
+      <form>
+        <InputGroup
+          label="Email"
+          type="email"
+          :required="true"
+          placeholder="輸入Email"
+          @onChange="(val) => (loginEmail = val)"
+        />
+        <InputGroup
+          label="Password"
+          type="password"
+          :required="true"
+          @onChange="(val) => (loginPassword = val)"
+        />
+        <button class="btn btn-primary btn-block">Login</button>
+        <p>{{ loginEmail }}</p>
+        <p>{{ loginPassword }}</p>
+      </form>
+    </Modal>
   </div>
 </template>
 <script>
@@ -21,6 +43,9 @@ export default {
   data() {
     return {
       isActive: false,
+      loginEmail: "",
+      loginPassword: "",
+      showLogin: false,
     };
   },
   methods: {
@@ -30,20 +55,21 @@ export default {
   },
   watch: {
     $route() {
-      //切換頁面時
+      // 切換頁面時
       this.isActive = false;
     },
   },
-  mounted(){
-    window
-  }
+  mounted() {
+    // 當視窗縮放時
+    window.addEventListener("resize", () => {
+      this.isActive = false;
+    });
+  },
 };
 </script>
-
 <style>
 .nav-list .nuxt-link-exact-active {
-  color: red;
+  color: tomato;
   pointer-events: none;
-  /* cursor: pointer; */
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
-  <div class="card">
-    <!-- <img class="card-img-top" :src="article.previewImage" alt=""> -->
+  <div class="card mb-3">
     <div
       class="card-img-top"
       :style="{ backgroundImage: `url(${article.previewImage})` }"
@@ -9,12 +8,12 @@
       <h4 class="card-title">{{ article.title }}</h4>
       <p class="card-text">{{ article.city }}</p>
       <div>
-          <nuxt-link class="btn btn-primary" :to="`/article/${article.id}`">
+        <nuxt-link :to="`/article/${article.id}`" class="btn btn-primary">
           Details
-          </nuxt-link>
-          <nuxt-link :to="`/arrticle/${article.id}/edit`">
+        </nuxt-link>
+        <nuxt-link :to="`/article/${article.id}/edit`" class="btn btn-warning">
           Edit
-          </nuxt-link>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -29,7 +28,6 @@ export default {
 .card-img-top {
   width: 100%;
   height: 100px;
+  background-size: cover;
 }
-</style>>
-
 </style>
